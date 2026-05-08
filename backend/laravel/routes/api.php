@@ -15,7 +15,7 @@ Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'Logo
 
 Route::get('Notes/{user_id}',[NotesController::class,'getNotes'])->middleware('auth:sanctum');
 Route::get('Notes/{user_id}/searchbytitle/{title}',[NotesController::class,'getNoteBytitle'])->middleware('auth:sanctum');
-Route::get('Notes/{user_id}/searchbydate/{date}',[NotesController::class,'getNoteBydate']);
+Route::get('Notes/{user_id}/searchbydate/{date}',[NotesController::class,'getNoteBydate'])->middleware('auth:sanctum');
 Route::get('Notes/{user_id}/searchbypriority/{priority}',[NotesController::class,'getNoteBypriority'])->middleware('auth:sanctum');
 
 Route::post('Notes/{user_id}',[NotesController::class,'createNote'])->middleware('auth:sanctum');
