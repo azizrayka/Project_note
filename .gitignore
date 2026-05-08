@@ -1,0 +1,3 @@
+# Project exclude paths
+/backend/laravel/storage/app/
+/backend/laravel/storage/framework/
