@@ -41,7 +41,7 @@ class NotesController extends Controller
 
     public function getNoteBytitle(string $user_id, string $title)
     {
-        $notes = Notes::where('user_id', $user_id)->where('title', $title)->get();
+        $notes = Notes::where('user_id', $user_id)->where('title', 'LIKE', '%' . $title . '%')->get();
         if ($notes->isEmpty()) {
             return response()->json(['message' => 'No notes found'], 404);
         }
@@ -50,7 +50,7 @@ class NotesController extends Controller
 
     public function getNoteBypriority(string $user_id, string $priority)
     {
-        $note = Notes::where('user_id', $user_id)->where('priority', $priority)->get();
+        $note = Notes::where('user_id', $user_id)->where('priority', 'LIKE', '%' . $priority . '%')->get();
         if ($note->isEmpty()) {
             return response()->json(['message' => 'No notes found'], 404);
         }
@@ -59,7 +59,7 @@ class NotesController extends Controller
 
     public function getNoteBydate(string $user_id, string $date)
     {
-        $note = Notes::where('user_id', $user_id)->whereDate('created_at', $date)->get();
+        $note = Notes::where('user_id', $user_id)->whereDate('created_at', 'LIKE', '%' . $date . '%')->get();
         if ($note->isEmpty()) {
             return response()->json(['message' => 'No notes found'], 404);
         }
