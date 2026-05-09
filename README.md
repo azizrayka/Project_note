@@ -109,6 +109,6 @@ The app will be available at `http://localhost:5173`.
 | GET    | /api/Notes/{user_id}/searchbydate/{date}        | Yes           | Search notes by date     |
 | GET    | /api/Notes/{user_id}/searchbypriority/{priority}| Yes           | Filter notes by priority |
 
-**Date format:** `YYYY-MM-DD` (e.g. `2025-05-08`)
+**Date format:** `DD MM YY` (e.g. `8 mai 2026`)
 
 **Priority values:** `Basse`, `Moyenne`, `Haute`
