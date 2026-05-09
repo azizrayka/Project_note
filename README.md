@@ -7,7 +7,7 @@ A full-stack web application for managing personal notes, built with **Laravel**
 ## Tech Stack
 
 - **Backend:** Laravel 10/11, Laravel Sanctum, SQLite or MySQL
-- **Frontend:** React 18, React Router, Axios, Tailwind CSS
+- **Frontend:** React 18(Vite), React Router, Axios, Tailwind CSS
 
 ---
 
