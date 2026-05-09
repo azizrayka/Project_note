@@ -44,6 +44,7 @@ export default function NoteForm({id, onNoteCreated, showToast}: NoteFormProps) 
                 placeholder="Title"
                 onChange={(e) => setT(e.target.value)}
                 className="border-b-2 border-[#203562] w-full font-medium text-xl outline-none"
+                maxLength={100}
             />
             <textarea
                 placeholder="Take a note..."
