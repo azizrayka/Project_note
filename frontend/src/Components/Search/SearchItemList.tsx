@@ -16,10 +16,22 @@ export default function SearchItemList({ user_id, current, search }: {
     current?: string;
     search?: string;
 }) {
+    const formatDate = (dateString: string): string => {
+        return new Date(dateString).toLocaleDateString('fr-FR', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    };
     const [notes, setNotes] = useState<Note[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     useEffect(() => {
+        const parseFrenchDate = (str: string) => {
+            const m: Record<string, number> = { janvier:0, février:1, mars:2, avril:3, mai:4, juin:5, juillet:6, août:7, septembre:8, octobre:9, novembre:10, décembre:11 };
+            const [d, month, y] = str.toLowerCase().split(/\s+/);
+            return new Date(Date.UTC(Number(y), m[month], Number(d))).toISOString();
+        };
         const controller = new AbortController();
         const getNotes = async () => {
             if (!search?.trim() || !current) {
@@ -43,6 +55,17 @@ export default function SearchItemList({ user_id, current, search }: {
                         return;
                     }
                     searchPath = color;
+                }
+                else if (current === "searchbydate") {
+                    try {
+                        const isoDate = parseFrenchDate(search);
+                        searchPath = encodeURIComponent(isoDate.split('T')[0]);
+                    } catch {
+                        setNotes([]);
+                        setLoading(false);
+                        setError("Format de date invalide (ex: 3 mai 2025)");
+                        return;
+                    }
                 }
                 const resp = await api.get(`/Notes/${user_id}/${current}/${searchPath}`, {
                     signal: controller.signal,
@@ -71,7 +94,7 @@ export default function SearchItemList({ user_id, current, search }: {
                     <div key={note.id} className="flex flex-col gap-2 bg-[#203562] rounded-md p-5 mb-10">
                         <p className="text-2xl text-white font-medium truncate">{note.title}</p>
                         <p className="text-sm text-white w-full h-20 overflow-auto">{note.content}</p>
-                        <span className="text-white">{note.updated_at.substring(0, 10)}</span>
+                        <span className="text-white">{formatDate(note.updated_at.substring(0, 10))}</span>
                         <div className={`${note.priority} w-full h-2 rounded-full`} />
                     </div>
                 ))

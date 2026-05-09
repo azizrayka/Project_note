@@ -11,7 +11,6 @@ interface Note {
     updated_at: string;
     priority: string;
 }
-
 interface NoteItemProps {
     index: number,
     note: Note,
@@ -21,6 +20,13 @@ interface NoteItemProps {
 }
 
 export default function NoteItem({user_id, index, note, setNotes, showToast}: NoteItemProps) {
+    const formatDate = (dateString: string): string => {
+        return new Date(dateString).toLocaleDateString('fr-FR', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    };
     const [titleupd, setTitleupd] = useState("");
     const [contentupd, setContentupd] = useState("");
     const [priorityupd, setPriorityupd] = useState("");
@@ -36,7 +42,6 @@ export default function NoteItem({user_id, index, note, setNotes, showToast}: No
         };
         if (user_id) getNotes();
     }, [user_id]);
-
     async function handleUpdate(note: Note) {
         try {
             const payload = {
@@ -59,7 +64,6 @@ export default function NoteItem({user_id, index, note, setNotes, showToast}: No
             }
         }
     }
-
     const deleteNote = async (id_note: number) => {
         try {
             await api.delete(`/Notes/${user_id}/${id_note}`);
@@ -90,7 +94,7 @@ export default function NoteItem({user_id, index, note, setNotes, showToast}: No
             <textarea defaultValue={note.content} onChange={(e) => setContentupd(e.target.value)}
                       className={"text-sm text-white w-full h-max grow resize-none outline-none"}
             ></textarea>
-            <span className={"text-white"}>{note.updated_at.substring(0, 10)}</span>
+            <span className={"text-white"}>{formatDate(note.updated_at.substring(0, 10))}</span>
             <div className={`${[note.priority]} w-full h-2 rounded-full`}></div>
             <div className={"flex flex-row items-center gap-3 -mb-3"}>
                 <span className={"text-white"}>Priority Level</span>
