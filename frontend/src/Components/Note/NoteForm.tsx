@@ -49,7 +49,6 @@ export default function NoteForm({id, onNoteCreated, showToast}: NoteFormProps) 
             <textarea
                 placeholder="Take a note..."
                 className="h-30 resize-none outline-none"
-                maxLength={100}
                 defaultValue=""
                 onChange={(e) => setC(e.target.value)}
             />
