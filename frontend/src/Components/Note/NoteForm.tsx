@@ -39,42 +39,17 @@ export default function NoteForm({id, onNoteCreated, showToast}: NoteFormProps) 
     return (
         <form className="flex flex-col gap-3 p-10 bg-white w-90% mt-5 mx-5 rounded-md shadow-md h-auto">
             <span className="text-2xl text-[#203562] font-medium">Add a Note</span>
-            <input
-                type="text"
-                placeholder="Title"
-                onChange={(e) => setT(e.target.value)}
-                className="border-b-2 border-[#203562] w-full font-medium text-xl outline-none"
-                maxLength={100}
-            />
-            <textarea
-                placeholder="Take a note..."
-                className="h-30 resize-none outline-none"
-                defaultValue=""
-                onChange={(e) => setC(e.target.value)}
-            />
+            <input type="text" placeholder="Title" onChange={(e) => setT(e.target.value)} className="border-b-2 border-[#203562] w-full font-medium text-xl outline-none" maxLength={100}/>
+            <textarea placeholder="Take a note..." className="h-30 resize-none outline-none" defaultValue="" onChange={(e) => setC(e.target.value)}/>
             <div className="flex flex-row gap-10">
                 Priority Level
-                <input onClick={() => setP("bg-green-500")} name="priority" type="radio"
-                       className="size-6 accent-green-500"/>
-                <input onClick={() => setP("bg-orange-500")} name="priority" type="radio"
-                       className="size-6 accent-orange-500"/>
-                <input onClick={() => setP("bg-red-500")} name="priority" type="radio"
-                       className="size-6 accent-red-500"/>
+                <input onClick={() => setP("bg-green-500")} name="priority" type="radio" className="size-6 accent-green-500"/>
+                <input onClick={() => setP("bg-orange-500")} name="priority" type="radio" className="size-6 accent-orange-500"/>
+                <input onClick={() => setP("bg-red-500")} name="priority" type="radio" className="size-6 accent-red-500"/>
             </div>
             <div className="flex flex-row gap-5">
-                <button
-                    type="button"
-                    onClick={() => createNote(t, c, p)}
-                    className="font-bold bg-[#203562] text-white w-1/2 rounded-md p-2 cursor-pointer"
-                >
-                    add
-                </button>
-                <button
-                    type="reset"
-                    className="font-bold bg-[#203562] text-white w-1/2 rounded-md p-2 cursor-pointer"
-                >
-                    reset
-                </button>
+                <button type="button" onClick={() => createNote(t, c, p)} className="font-bold bg-[#203562] text-white w-1/2 rounded-md p-2 cursor-pointer">add</button>
+                <button type="reset" className="font-bold bg-[#203562] text-white w-1/2 rounded-md p-2 cursor-pointer">reset</button>
             </div>
         </form>
     );
