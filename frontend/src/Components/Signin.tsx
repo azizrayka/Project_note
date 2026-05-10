@@ -19,7 +19,6 @@ export default function Signin() {
             localStorage.setItem("token", resp.data.access_token);
             localStorage.setItem("user_id", resp.data.user_id);
             localStorage.setItem("user_name", resp.data.user_name);
-            console.log(resp.data.access_token);
             navigate(`/Notes/${resp.data.user_id}`);
         }catch (err) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
