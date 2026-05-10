@@ -26,7 +26,7 @@ export default function Signup() {
                     <span className={"text-[#203562] font-bold text-2xl mb-15"}>Sign Up</span>
                     <input onChange={(e)=>setName(e.target.value)} type="text" placeholder="Name" className={"outline-none bg-gray-200 p-2 rounded-md"}/>
                     <input onChange={(e)=>setEmail(e.target.value)} type="text" placeholder="Email" className={"outline-none bg-gray-200 p-2 rounded-md"}/>
-                    <input onChange={(e)=>setPassword(e.target.value)} type="text" placeholder="Password" className={"outline-none bg-gray-200 p-2 rounded-md mb-5"}/>
+                    <input onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Password" className={"outline-none bg-gray-200 p-2 rounded-md mb-5"}/>
                     <button onClick={()=>handleSignUp()} className={"text-white bg-[#203562] w-full p-2 rounded-md cursor-pointer"}>Sign Up</button>
                     <span>Already have an account? <button className={"text-[#203562] font-bold"} onClick={()=>navigate("/signin")}>Sign In</button></span>
                 </div>

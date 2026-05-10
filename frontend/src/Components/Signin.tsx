@@ -27,7 +27,7 @@ export default function Signin() {
                     <button className={"flex flex-row gap-3 -ml-80 cursor-pointer"} onClick={()=>navigate("/")}><div><ArrowCircleLeftIcon size={26} /></div><div>Back</div></button>
                     <span className={"text-[#203562] font-bold text-2xl mb-15"}>Sign In</span>
                     <input onChange={(e)=>setEmail(e.target.value)} type="text" placeholder="Email" className={"outline-none bg-gray-200 p-2 rounded-md"}/>
-                    <input onChange={(e)=>{setPassword(e.target.value)}} type="text" placeholder="Password" className={"outline-none bg-gray-200 p-2 rounded-md mb-20"}/>
+                    <input onChange={(e)=>{setPassword(e.target.value)}} type="password" placeholder="Password" className={"outline-none bg-gray-200 p-2 rounded-md mb-20"}/>
                     <button onClick={()=>{handleSignIN()}} className={"text-white bg-[#203562] w-full p-2 rounded-md cursor-pointer"}>Sign In</button>
                     <span>Don't have an account? <button className={"text-[#203562] font-bold"}  onClick={()=>navigate("/signup")}>Sign Up</button></span>
                 </div>
