@@ -19,10 +19,13 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
-            localStorage.removeItem("token");
-            localStorage.removeItem("user_id");
-            localStorage.removeItem("user_name");
-            window.location.href = "/";
+            const isAuthPage = ["/signin", "/signup"].includes(window.location.pathname);
+            if (!isAuthPage) {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user_id");
+                localStorage.removeItem("user_name");
+                window.location.href = "/";
+            }
         }
         return Promise.reject(error);
     }
